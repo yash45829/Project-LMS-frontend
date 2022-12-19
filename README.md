@@ -1,1 +1,1 @@
-# neurolab-vite
+# lab-vite
