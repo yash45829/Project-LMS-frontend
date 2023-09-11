@@ -80,12 +80,12 @@ function AboutUs() {
     <div id={`slide${i+1}`} className="carousel-item relative w-full">
     <div className="place-items-center text-center mx-auto gap-2 w-full">
     <img src={ideal.image} className=" shadow-md rounded-full w-[40vh] h-[40vh] m-auto" />
-    <h1 className="font-semibold text-2xl">APJ Abdul Kalam</h1>
+    <h1 className="font-semibold text-2xl">{ideal.name}</h1>
     <p className=" text-xl">{ideal.desc}</p>
     </div>
     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
       <a href={(i+1) == 1 ? `#slide${ideals.length}`: `#slide${i}` } className="btn btn-circle bg-transparent">❮</a> 
-      <a href={(i+1) == ideals.length ? `#slide1` : `#slide${i+2}` } className="btn btn-circle bg-transparent">❯</a>
+      <a href={(i+1) == ideals.length ? `#slide1` : `#slide${i+2}` } className="btn btn-circle bg-transparent ">❯</a>
     </div>
   </div> 
   )
