@@ -24,7 +24,7 @@ function HomePageLayout({ children }) {
             htmlFor="my-drawer"
             className="btn bg-transparent hover:bg-transparent border-none p-2"
           >
-            <FiMenu size={"25px"} />{" "}
+            <FiMenu size={"25px"} />
           </label>
         </div>
         <div className="drawer-side z-50">

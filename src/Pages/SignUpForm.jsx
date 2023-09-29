@@ -4,6 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import HomePageLayout from "../Layouts/HomePageLayout";
 import { BsPersonCircle } from "react-icons/bs";
 import toast from "react-hot-toast";
+import { createAccount } from "../Redux/slice/authSlice";
 // import { Tooltip } from "react-tooltip";
 // import {AiOutlineUpload} from "react-icons/ai";
 
@@ -50,9 +51,10 @@ function SignUpForm() {
     }
   }
 
-  function createNewAccount(event) {
+  async function createNewAccount(event) {
     event.preventDefault();
 
+    // FORM VALIDATIONS
     if (
       !signUpFormData.fullname ||
       !signUpFormData.email ||
@@ -78,7 +80,7 @@ function SignUpForm() {
 
     if (
       !signUpFormData.password.match(
-        /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[a-zA-Z!#$%&? "])[a-zA-Z0-9!#$%&?]{8,20}$/
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
       )
     ) {
       toast.error(
@@ -87,15 +89,17 @@ function SignUpForm() {
       return;
     }
 
+    //  CREATING FORM DATA TO SEND TO BACKEND SERVER
     const formData = new FormData();
-    formData.append("fullName", signUpFormData.fullname);
+    formData.append("firstname", signUpFormData.fullname);
     formData.append("email", signUpFormData.email);
     formData.append("password", signUpFormData.password);
     formData.append("avatar", signUpFormData.avatar);
 
     // dispatch
+    const response = await dispatch(createAccount(formData));
 
-    navigate("/");
+    if (response?.payload?.success) navigate("/");
 
     setSignUpFormData({
       fullname: "",
@@ -120,10 +124,7 @@ function SignUpForm() {
           </h1>
           <label
             htmlFor="image_upload"
-            onTouchMove={"upload your image"}
             className="w-fit mx-auto "
-            // data-tooltip-id="my-tooltip"
-            // data-tooltip-content="Hello world!"
           >
             {previewImage ? (
               <img
