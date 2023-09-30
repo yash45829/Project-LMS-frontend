@@ -122,10 +122,7 @@ function SignUpForm() {
           <h1 className="w-full text-center  font-semibold my-2">
             SignUp Here
           </h1>
-          <label
-            htmlFor="image_upload"
-            className="w-fit mx-auto "
-          >
+          <label htmlFor="image_upload" className="w-fit mx-auto ">
             {previewImage ? (
               <img
                 src={previewImage}
