@@ -2,6 +2,8 @@ import Footer from "../Components/Footer/Footer";
 import { FiMenu } from "react-icons/fi";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { logOutAccount } from "../Redux/slice/authSlice";
 function HomePageLayout({ children }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -11,7 +13,11 @@ function HomePageLayout({ children }) {
 
   function logoutHandler(e) {
     e.preventDefault();
-    navigate("/");
+    const response = dispatch(logOutAccount());
+    if (response?.payload?.success){
+      navigate("/");
+    }
+
   }
   return (
     <div className=" h-full bg-gradient-to-r from-violet-200 to-pink-200  ">
@@ -54,7 +60,7 @@ function HomePageLayout({ children }) {
               </li>
             )}
             {isLoggedIn ? ( <li>
-               <button onClick={logoutHandler}>LogIn</button>
+               <button onClick={logoutHandler}>LogOut</button>
              </li>): (
               <div>
                <li>
