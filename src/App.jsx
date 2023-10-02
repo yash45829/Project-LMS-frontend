@@ -5,6 +5,7 @@ import HomePage from "./Pages/HomePage";
 import SignUpForm from "./Pages/SignUpForm";
 import LoginPage from "./Pages/LoginPage";
 import CoursePage from "./Pages/Courses/CoursesPage";
+import Contactpage from "./Pages/ContactPage";
 function App() {
   // routing here
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutUs />} />
       <Route path="/courses" element={<CoursePage />} />
+      <Route path="/contact" element={<Contactpage />} />
       <Route path="/signup" element={<SignUpForm />} />
       <Route path="/login" element={<LoginPage />} />
     </Routes>
