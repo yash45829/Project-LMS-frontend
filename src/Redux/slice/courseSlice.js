@@ -22,13 +22,41 @@ export const getAllCourses = createAsyncThunk("/auth/courses", async (data) => {
   }
 });
 
+export const createNewCourse = createAsyncThunk("/course/create", async (userInput) => {
+  try {
+    const formData = new FormData();
+    formData.append("title" , userInput.title);
+    formData.append("category",userInput.category);
+    formData.append("description",userInput.category);
+    formData.append("createdBy",userInput.category);
+    formData.append("thumbnail",userInput.thumbnail);
+
+
+    const res = axiosInstance.post("course/createCourse", formData);
+    toast.promise(res, {
+      loading: "creating course..",
+      success: (data) => {
+        return data?.data?.message;
+      },
+      error: (data) => {
+        return data?.data?.message;
+      },
+    });
+    return (await res).data;
+  } catch (error) {
+    toast.error(error?.response?.data?.message);
+  }
+});
+
 const courseSlice = createSlice({
     name : "course",
     initialState,
     reducers : {},
     extraReducers : (builder)=>{
-     builder.addCase((state,action)=>{
-      
+     builder.addCase(getAllCourses.fulfilled,(state,action)=>{
+      if(action.payload){
+        state.courseData = [...action.payload];
+      }
      })
     }
  })
@@ -36,5 +64,4 @@ const courseSlice = createSlice({
 
 
 
-// export cosnt {} = authSlice.actions;
 export default courseSlice.reducer;
