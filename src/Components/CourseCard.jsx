@@ -1,19 +1,23 @@
 
 function CourseCard({data}){
-
+  console.log(data)
     return(
         
-        <div className="h-fit w-72 border z-20 border-yellow-600 rounded-xl">
-        <img src="" className="h-44 border rounded-lg border-purple-800" alt="image" />
-        <p className="text-xl font-semibold py-2 px-1 text-left ">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium, dolores.
+        <div className="h-fit w-72  z-20 font-poppins bg-purple-300 rounded-xl hover:translate-2">
+        <img src={data.thumbnail.secure_url} className="h-44 w-72  rounded-lg" alt="image" />
+        <div className="px-2">
+        <h1 className="text-2xl font-semibold py-1 px-1 text-left ">{data.title}
+        </h1>
+        <p className="text-xl  py-2 px-1 text-left ">{data.description}
         </p>
         <div>
-          <p className="text-2xl font-semibold px-1">Category : <span className="font-bold text-orange-400">skills</span></p>
+          <p className="text-xl  px-1">Category : <span className="font-semibold text-orange-500">{data.category}</span></p>
         </div>
         <div>
-          <p className="text-2xl font-semibold px-1">Trainer : <span className="font-bold text-orange-400">expert</span></p>
+          <p className="text-xl  px-1">Trainer : <span className="font-semibold text-orange-500">{data.createdBy}</span></p>
         </div>
-        <button className="text-center mt-2 rounded-bl-lg rounded-br-lg -z-20 w-full text-xl font-semibold bg-gradient-to-r from-pink-200 to-pink-400  py-1  ">
+        </div>
+        <button className="text-center mt-2 shadow-white rounded-bl-lg rounded-br-lg -z-20 w-full text-xl font-semibold bg-gradient-to-r from-pink-300 to-pink-500  py-1  ">
            Explore Now
         </button>
         </div>

@@ -1,6 +1,18 @@
+import { useDispatch, useSelector } from "react-redux";
 import CourseCard from "../../Components/CourseCard";
 import HomePageLayout from "../../Layouts/HomePageLayout";
+import {getAllCourses} from "../../Redux/slice/courseSlice";
+import { useEffect } from "react";
 function CoursesPage(){
+  const dispatch = useDispatch();
+
+ async function courseList (){
+  await dispatch(getAllCourses());
+ }   
+ const { courseData} = useSelector((state) => state.course);
+useEffect(()=>{
+    courseList();
+}, [])
 
 
    return(
@@ -10,8 +22,10 @@ function CoursesPage(){
                All Courses teached by 
                <span className="mx-2 text-orange-400">Industry Experts</span>
             </h1>
-            <div className="my-2">
-               <CourseCard/>
+            <div className="my-2 flex flex-wrap gap-8 justify-start items-start">
+               {courseData.map(course=>
+               <CourseCard  data = {course} />
+               )}
             </div>
 
          </div>

@@ -42,12 +42,14 @@ function SignUpForm() {
         avatar: uploadImage,
       });
 
+      console.log(signUpFormData)
       const fileReader = new FileReader();
 
       fileReader.readAsDataURL(uploadImage);
       fileReader.addEventListener("load", function () {
         setPreviewImage(this.result);
       });
+      console.log(uploadImage)
     }
   }
 
@@ -88,7 +90,7 @@ function SignUpForm() {
       );
       return;
     }
-
+   console.log(signUpFormData)
     //  CREATING FORM DATA TO SEND TO BACKEND SERVER
     const formData = new FormData();
     formData.append("firstname", signUpFormData.fullname);
@@ -97,6 +99,7 @@ function SignUpForm() {
     formData.append("avatar", signUpFormData.avatar);
 
     // dispatch
+
     const response = await dispatch(createAccount(formData));
 
     if (response?.payload?.success) navigate("/");
