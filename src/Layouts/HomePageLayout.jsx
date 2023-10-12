@@ -63,7 +63,7 @@ function HomePageLayout({ children }) {
             </li>
             {isLoggedIn && (
               <li>
-                <Link to="/profile">Profile</Link>
+                <Link to="/user/profile">Profile</Link>
               </li>
             )}
             {isLoggedIn ? ( <li>

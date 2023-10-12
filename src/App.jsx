@@ -9,6 +9,7 @@ import Contactpage from "./Pages/ContactPage";
 import DeniedPage from "./Pages/DeniedPage";
 import RequireAuth from "./Components/Auth/RequireAuth";
 import CreateCourse from "./Pages/Courses/CreateCourse";
+import ProfilePage from "./Pages/Users/ProfilePage";
 
 function App() {
   // routing here
@@ -20,12 +21,16 @@ function App() {
       <Route path="/denied" element={<DeniedPage />} />
       <Route path="/contact" element={<Contactpage />} />
       <Route path="/signup" element={<SignUpForm />} />
-      <Route path="/course/create" element={<CreateCourse />} />
-
       <Route path="/login" element={<LoginPage />} />
+      
       <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
-        {/* <Route path="/course/create" element={<CreateCourse />} /> */}
+        <Route path="/course/create" element={<CreateCourse />} />
       </Route>
+
+      <Route element={<RequireAuth allowedRoles={["ADMIN" , "USER"]} />}>
+      <Route path="/user/profile" element={<ProfilePage />} />
+      </Route>
+
     </Routes>
   );
 }
