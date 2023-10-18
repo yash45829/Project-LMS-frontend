@@ -11,6 +11,7 @@ import RequireAuth from "./Components/Auth/RequireAuth";
 import CreateCourse from "./Pages/Courses/CreateCourse";
 import ProfilePage from "./Pages/Users/ProfilePage";
 import EditProfile from "./Pages/Users/EditProfile";
+import CourseDescription from "./Pages/Courses/CourseDescription";
 
 function App() {
   // routing here
@@ -23,6 +24,7 @@ function App() {
       <Route path="/contact" element={<Contactpage />} />
       <Route path="/signup" element={<SignUpForm />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/course/description" element={<CourseDescription/>} />
 
       <Route element={<RequireAuth allowedRoles={["ADMIN"]} />}>
         <Route path="/course/create" element={<CreateCourse />} />
