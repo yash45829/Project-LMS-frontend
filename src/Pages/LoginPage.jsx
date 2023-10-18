@@ -34,13 +34,13 @@ function LoginPage() {
     }
    console.log(loginData);
     // dispatch
-    const loginFormData = new FormData();
+  //   const loginFormData = new FormData();
  
-    loginFormData.append("email",loginData.email);
-    loginFormData.append("password",loginData.password);
-  console.log(loginFormData)
+  //   loginFormData.append("email",loginData.email);
+  //   loginFormData.append("password",loginData.password);
+  // console.log(loginFormData)
     const response = await dispatch(loginAccount(loginData));
-
+    console.log(response)
     if (response?.payload?.success) navigate("/");
     if (!response?.payload?.success) 
     console.log(response)

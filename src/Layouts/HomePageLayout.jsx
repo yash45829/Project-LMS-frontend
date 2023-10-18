@@ -11,10 +11,11 @@ function HomePageLayout({ children }) {
   const isLoggedIn = useSelector((state) => state?.auth?.isLoggedIn);
   const role = useSelector((state) => state?.auth?.role);
 
-  function logoutHandler(e) {
+ async function logoutHandler(e) {
     e.preventDefault();
-    const response = dispatch(logOutAccount());
-    if (response?.payload?.success){
+    const response =  dispatch(logOutAccount());
+    
+    if ((await response)?.payload?.success){
       navigate("/");
     }
 
