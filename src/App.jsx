@@ -12,6 +12,8 @@ import CreateCourse from "./Pages/Courses/CreateCourse";
 import ProfilePage from "./Pages/Users/ProfilePage";
 import EditProfile from "./Pages/Users/EditProfile";
 import CourseDescription from "./Pages/Courses/CourseDescription";
+import Checkout from "./Pages/Payment/Checkout";
+import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
 
 function App() {
   // routing here
@@ -33,8 +35,12 @@ function App() {
       <Route element={<RequireAuth allowedRoles={["ADMIN", "USER"]} />}>
         <Route path="/user/profile" element={<ProfilePage />} />
       <Route path="/user/edit" element={<EditProfile />} />
-
+      <Route path="/checkout"  element={ <Checkout/>} />
+      <Route path="/checkout/success"  element={ <CheckoutSuccess/>} />
+     
       </Route>
+      <Route path="/*" element={<DeniedPage />} />
+
     </Routes>
   );
 }
