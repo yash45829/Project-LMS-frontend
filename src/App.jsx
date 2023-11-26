@@ -14,6 +14,7 @@ import EditProfile from "./Pages/Users/EditProfile";
 import CourseDescription from "./Pages/Courses/CourseDescription";
 import Checkout from "./Pages/Payment/Checkout";
 import CheckoutSuccess from "./Pages/Payment/CheckoutSuccess";
+import CheckoutFailure from "./Pages/Payment/CheckoutFailure";
 
 function App() {
   // routing here
@@ -37,6 +38,7 @@ function App() {
       <Route path="/user/edit" element={<EditProfile />} />
       <Route path="/checkout"  element={ <Checkout/>} />
       <Route path="/checkout/success"  element={ <CheckoutSuccess/>} />
+      <Route path="/checkout/fail"  element={ <CheckoutFailure/>} />
      
       </Route>
       <Route path="/*" element={<DeniedPage />} />

@@ -43,8 +43,8 @@ export const paymentVerify = createAsyncThunk(
         razorpay_subscription_id: data.razorpay_subscription_id,
         razorpay_signature: data.razorpay_signature,
       });
-
-      return response.data;
+         console.log(response)
+      return response?.data;
     } catch (error) {
       toast(error.message);
     }
