@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import axiosInstance from "../../Helpers/axiosInstance";
 
-const { createSlice, createAsyncThunk } = require("@reduxjs/toolkit");
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   lectures: [],
@@ -11,7 +11,7 @@ export const getCourseLectures = createAsyncThunk(
   "/course/lecture/get",
   async (courseid) => {
     try {
-      const response = axiosInstance.get(`/courses/${courseid}`);
+      const response = axiosInstance.get(`/course/${courseid}`);
       toast.promise(response, {
         loading: "fetching lectures for course",
         success: "lectures downloaded",
@@ -29,10 +29,13 @@ export const addCourseLectures = createAsyncThunk(
   async (data) => {
     try {
       const formData = new FormData();
-      formData.append("lecture", data.lecture);
+      formData.append("lecture", data.video);
       formData.append("title", data.title);
       formData.append("description", data.description);
-      const response = axiosInstance.post(`/courses/${data.id}`, formData);
+      const response = axiosInstance.post(
+        `/course/${data.course_id}`,
+        formData
+      );
       toast.promise(response, {
         loading: "adding lecture for course",
         success: "lecture added ",
@@ -57,6 +60,7 @@ export const deleteLecture = createAsyncThunk(
         success: "deleted lecture",
         error: "failed to delete",
       });
+      return (await response).data;
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -70,10 +74,11 @@ const lectureSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getCourseLectures.fulfilled, (state, action) => {
-        state.lectures = action?.payload?.lectures;
+        console.log(action)
+        state.lectures = action?.payload?.lecture;
       })
       .addCase(addCourseLectures.fulfilled, (state, action) => {
-        state.lectures = action?.payload?.course?.lectures;
+        state.lectures = action?.payload?.course?.lecture;
       });
   },
 });

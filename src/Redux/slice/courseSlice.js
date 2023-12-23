@@ -52,6 +52,25 @@ console.log(formData)
   }
 );
 
+export const deleteCourse = createAsyncThunk(
+  "course//del",
+  async (courseid) => {
+    try {
+      const response = axiosInstance.delete(
+        `/course?courseId=${courseid}`
+      );
+      toast.promise(response, {
+        loading: "deleting course",
+        success: "deleted course",
+        error: "failed to delete",
+      });
+      return (await response).data;
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  }
+);
+
 const courseSlice = createSlice({
   name: "course",
   initialState,
