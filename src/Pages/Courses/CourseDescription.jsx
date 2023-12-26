@@ -15,7 +15,7 @@ function CourseDescription() {
     await dispatch(userProfile());
   }
   const userData = useSelector((state) => state?.auth?.data);
-  console.log(userData);
+  // console.log(userData);
   useEffect(() => {
     profile();
   }, []);
@@ -23,7 +23,7 @@ function CourseDescription() {
   return (
     <HomePageLayout>
       <div className="min-h-[100vh] flex flex-col justify-center  items-center">
-        <div className="grid grid-cols-2  w-2/3 bg-purple-200 rounded-lg font-semibold gap-x-8 py-2 px-4">
+        <div className="flex lg:flex-row flex-col-reverse gap-y-4 my-2 w-2/3 bg-purple-200 rounded-lg font-semibold lg:gap-x-8 py-2 px-4">
           <div className="flex flex-col gap-y-3 text-xl">
             <h1 className="text-3xl text-orange-400 font-semibold ">
               {state?.title}

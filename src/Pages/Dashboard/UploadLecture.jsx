@@ -48,7 +48,7 @@ function UploadLecture() {
     }
 
     const res = await dispatch(addCourseLectures(lectureData));
-    console.log(res);
+    // console.log(res);
     if (res?.payload?.success) {
       setLectureData({
         ...lectureData,

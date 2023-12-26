@@ -32,7 +32,7 @@ function CreateCourse() {
   // COURSE THUMBNAIL HANDLER
   function courseImageHandler(e) {
     e.preventDefault();
-    console.log(e.target.files[0]);
+    // console.log(e.target.files[0]);
     const image = e.target.files[0];
 
   
@@ -54,7 +54,7 @@ function CreateCourse() {
           };
         });
       });
-      console.log(image)
+      // console.log(image)
     }
   }
 

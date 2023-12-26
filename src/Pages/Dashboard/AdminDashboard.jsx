@@ -40,7 +40,7 @@ function AdminDashboard() {
     (state) => state?.razorpay
   );
   const { courseData } = useSelector((state) => state?.course);
-  console.log(courseData);
+  // console.log(courseData);
 
   const userData = {
     labels: ["Registered User", "Enrolled User"],

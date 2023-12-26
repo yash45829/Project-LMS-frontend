@@ -42,14 +42,14 @@ function SignUpForm() {
         avatar: uploadImage,
       });
 
-      console.log(signUpFormData)
+      // console.log(signUpFormData)
       const fileReader = new FileReader();
 
       fileReader.readAsDataURL(uploadImage);
       fileReader.addEventListener("load", function () {
         setPreviewImage(this.result);
       });
-      console.log(uploadImage)
+      // console.log(uploadImage)
     }
   }
 

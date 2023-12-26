@@ -8,7 +8,7 @@ function HomePage() {
     <>
       <HomePageLayout>
         <div className="h-[94vh]  flex flex-col justify-center items-center ">
-          <h1 className="font-extrabold text-4xl">
+          <h1 className="font-extrabold text-4xl text-center">
             Find Out Best
             <span className="text-amber-600"> Online Courses</span>
           </h1>

@@ -15,14 +15,14 @@ function ProfilePage() {
   }
   const userData = useSelector((state) => state?.auth?.data);
 
-  console.log(userData);
+  // console.log(userData);
   useEffect(() => {
     profile();
   }, []);
 
   const navigate = useNavigate();
 
-  console.log(userData);
+  // console.log(userData);
   async function handleCancelSubscription() {
     const result = await dispatch(unsubscribeCourse());
 

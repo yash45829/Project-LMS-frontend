@@ -6,12 +6,12 @@ function AboutUs() {
   return (
     <HomePageLayout>
       <div className="h-[100%] p-10 flex flex-col  my-8">
-        <div className="flex items-center ">
-          <section className="w-1/2">
+        <div className="flex flex-col-reverse items-center lg:flex-row ">
+          <section className="lg:w-1/2 w-full text-center">
             <h1 className="font-extrabold text-4xl">
               We provide best content at affordable price.
             </h1>
-            <p className="  my-2 text-start text-xl">
+            <p className="  my-2 lg:text-start text-xl text-center">
               Welcome to our Learning Management System (LMS) project! We are a
               dedicated team of passionate educators, technologists, and
               innovators who are committed to revolutionizing the way people

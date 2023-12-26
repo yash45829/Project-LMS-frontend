@@ -13,20 +13,22 @@ function DisplayLectures() {
   const dispatch = useDispatch();
   const { state } = useLocation();
 
-  console.log(state);
+  // console.log(state);
 
   const { lectures } = useSelector((state) => state.lecture);
-  console.log(lectures);
+  // console.log(lectures);
   const role = useSelector((state) => state?.auth.role);
-  console.log(role);
+  // console.log(role);
 
   async function delLecture(course_id, lect_id) {
+    if (window.confirm("Are you sure you want to delete the lecture ? ")) {
     const data = {
       courseid: course_id,
       lectureid: lect_id,
     };
     await dispatch(deleteLecture(data));
     await dispatch(getCourseLectures(course_id));
+  }
   }
   useEffect(() => {
     if (state) {
@@ -37,15 +39,15 @@ function DisplayLectures() {
   return (
     <HomePageLayout>
       <div className="h-[100vh] w-full flex flex-col items-center justify-center">
-        <h1>
-          <span className="text-orange-600">Course title : </span>
+        <h1 className="text-xl font-semibold">
+          <span className="text-orange-600 font-semibold">Course title : </span>
 
           {state?.title}
         </h1>
         {lectures && lectures?.length > 0 ? (
-          <div className="flex justify-center items-start w-[80%] ">
+          <div className="flex justify-center lg:flex-row items-start flex-col w-[80%] ">
             {/* video play section  */}
-            <div className="px-2 py-2 rounded shadow-sm w-3/5">
+            <div className="px-2 py-2 rounded shadow-sm lg:w-3/5 w-full">
               <video
                 className="h-auto w-[80%] mx-auto rounded bg-blue-200"
                 src={lectures && lectures[currentVideo]?.lecture?.secure_url}
@@ -58,7 +60,7 @@ function DisplayLectures() {
               <div>Descr: {lectures[currentVideo]?.description}</div>
             </div>
             {/* video list section  */}
-            <div className="w-2/5">
+            <div className="lg:w-2/5 w-full">
               <div>
                 {" "}
                 {role == "ADMIN" && (
@@ -78,6 +80,7 @@ function DisplayLectures() {
                     onClick={(e) => {
                       setCurrentVideo(i);
                     }}
+                    key={lec?._id}
                     className="bg-blue-300 rounded-sm py-2 px-2 mx-4 hover:cursor-pointer flex justify-start items-center"
                   >
                     <div>{i + 1}</div>
